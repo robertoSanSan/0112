@@ -34,23 +34,24 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
+        Room tierra, agua, elementos, aire, fuego;
       
         // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        tierra = new Room ("estas en la sala del elemento tierra, no es comestible");
+        agua = new Room("estas en la sala del elemento agua, no te ahogues");
+        elementos = new Room("estas en el centro, escoge el elemento que quieres ver");
+        aire = new Room("estas en la sala del elemento aire, no te quedes sin el");
+        fuego = new Room("estas en la sala del elemento fuego, cuidado no te quemes");
+        
         
         // initialise room exits
-        outside.setExits(null, theater, lab, pub);
-        theater.setExits(null, null, null, outside);
-        pub.setExits(null, outside, null, null);
-        lab.setExits(outside, office, null, null);
-        office.setExits(null, null, null, lab);
+        tierra.setExits(null, null, elementos, null);
+        agua.setExits(null, elementos, null, null);
+        elementos.setExits(tierra, aire, fuego, agua);
+        aire.setExits(null, null, null, elementos);
+        fuego.setExits(elementos, null, null, null);
 
-        currentRoom = outside;  // start game outside
+        currentRoom = elementos;  // start game outside
     }
 
     /**
