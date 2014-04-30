@@ -45,12 +45,27 @@ public class Game
         salida = new Room("acabas de salir del museo, hasta otro rato");
         entrada = new Room("acabas de entrar en el museo, bienvenido");
         // initialise room exits
-        tierra.setExits(null, null, elementos, null, null, null);
+        tierra.setExit("south", elementos);
+        
+        agua.setExit("east", elementos);
+        
+        elementos.setExit("north", tierra);
+        elementos.setExit("east", aire);
+        elementos.setExit("south", fuego);
+        elementos.setExit("west", agua);
+        elementos.setExit("northWest", entrada);
+        
+        aire.setExit("west", elementos);
+        
+        fuego.setExit("north", elementos);
+        fuego.setExit("southEast", salida);
+        
+        /**tierra.setExits(null, null, elementos, null, null, null);
         agua.setExits(null, elementos, null, null, null, null);
         elementos.setExits(tierra, aire, fuego, agua, null, entrada);
         aire.setExits(null, null, null, elementos, null, null);
         fuego.setExits(elementos, null, null, null, salida, null);
-        salida.setExits(null, null, null, null, null, null);
+        salida.setExits(null, null, null, null, null, null);**/
 
         currentRoom = elementos;  // start game outside
     }
