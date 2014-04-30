@@ -34,7 +34,7 @@ public class Game
      */
     private void createRooms()
     {
-        Room tierra, agua, elementos, aire, fuego, salida;
+        Room tierra, agua, elementos, aire, fuego, salida, entrada;
 
         // create the rooms
         tierra = new Room ("estas en la sala del elemento tierra, no es comestible");
@@ -43,13 +43,14 @@ public class Game
         aire = new Room("estas en la sala del elemento aire, no te quedes sin el");
         fuego = new Room("estas en la sala del elemento fuego, cuidado no te quemes");
         salida = new Room("acabas de salir del museo, hasta otro rato");
+        entrada = new Room("acabas de entrar en el museo, bienvenido");
         // initialise room exits
-        tierra.setExits(null, null, elementos, null, null);
-        agua.setExits(null, elementos, null, null, null);
-        elementos.setExits(tierra, aire, fuego, agua, null);
-        aire.setExits(null, null, null, elementos, null);
-        fuego.setExits(elementos, null, null, null, salida);
-        salida.setExits(null, null, null, null, null);
+        tierra.setExits(null, null, elementos, null, null, null);
+        agua.setExits(null, elementos, null, null, null, null);
+        elementos.setExits(tierra, aire, fuego, agua, null, entrada);
+        aire.setExits(null, null, null, elementos, null, null);
+        fuego.setExits(elementos, null, null, null, salida, null);
+        salida.setExits(null, null, null, null, null, null);
 
         currentRoom = elementos;  // start game outside
     }
